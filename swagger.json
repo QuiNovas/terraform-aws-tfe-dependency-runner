@@ -23,7 +23,6 @@
           }
         },
         "x-amazon-apigateway-integration": {
-          "credentials": "${tfe_dependency_runner_credentials}",
           "uri": "${tfe_dependency_runner_uri}",
           "responses": {
             "default": {
