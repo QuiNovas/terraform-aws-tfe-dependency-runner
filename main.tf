@@ -66,3 +66,13 @@ resource "aws_lambda_permission" "tfe_dependency_runner" {
   statement_id  = "AllowExecutionFromAPIGateway"
   source_arn    = "${aws_api_gateway_deployment.tfe_dependency_runner.execution_arn}/*/*/*"
 }
+
+resource "aws_iam_role" "tfe_dependency_runner_invocation" {
+  assume_role_policy  = "${data.aws_iam_policy_document.apigateway_assume_role.json}"
+  name                = "${var.name_prefix}tfe-dependency-runner-invocation"
+}
+
+resource "aws_iam_role_policy_attachment" "tfe_dependency_runner_invocation" {
+  policy_arn  = "${module.tfe_dependency_runner.invoke_policy_arn}"
+  role        = "${aws_iam_role.tfe_dependency_runner_invocation.name}"
+}
