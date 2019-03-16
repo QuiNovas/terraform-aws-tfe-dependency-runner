@@ -75,6 +75,9 @@ resource "aws_api_gateway_integration" "tfe_dependency_runner" {
 }
 
 resource "aws_api_gateway_deployment" "tfe_dependency_runner" {
+  depends_on        = [
+    "aws_api_gateway_integration.tfe_dependency_runner"
+  ]
   description       = "${var.name_prefix}tfe-dependency-runner"
   rest_api_id       = "${aws_api_gateway_rest_api.tfe_dependency_runner.id}"
   stage_name        = "webhook"
