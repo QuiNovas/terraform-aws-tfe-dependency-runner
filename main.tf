@@ -64,7 +64,7 @@ resource "aws_lambda_permission" "tfe_dependency_runner" {
   function_name = "${module.tfe_dependency_runner.name}"
   principal     = "apigateway.amazonaws.com"
   statement_id  = "AllowExecutionFromAPIGateway"
-  source_arn    = "${aws_api_gateway_deployment.tfe_dependency_runner.execution_arn}/*/*/*"
+  source_arn    = "${aws_api_gateway_deployment.tfe_dependency_runner.execution_arn}"
 }
 
 resource "aws_iam_role" "tfe_dependency_runner_invocation" {

@@ -1,7 +1,8 @@
 data "template_file" "swagger" {
   template = "${file("${path.module}/swagger.json")}"
   vars {
-    tfe_dependency_runner_uri = "${module.tfe_dependency_runner.invoke_arn}"
+    tfe_dependency_runner_credentials = "${aws_iam_role.tfe_dependency_runner_invocation.arn}"
+    tfe_dependency_runner_uri         = "${module.tfe_dependency_runner.invoke_arn}"
   }
 }
 
