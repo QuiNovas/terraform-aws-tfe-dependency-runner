@@ -1,17 +1,3 @@
-data "aws_iam_policy_document" "apigateway_assume_role" {
-  statement {
-    actions = [
-      "sts:AssumeRole"
-    ]
-    principals {
-      identifiers = [
-        "apigateway.amazonaws.com"
-      ]
-      type = "Service"
-    }
-  }
-}
-
 data "template_file" "swagger" {
   template = "${file("${path.module}/swagger.json")}"
   vars {
