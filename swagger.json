@@ -9,7 +9,7 @@
     "https"
   ],
   "paths": {
-    "/tfe-dependency-runner": {
+    "tfe-dependency-runner": {
       "post": {
         "produces": [
           "application/json"
