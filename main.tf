@@ -44,6 +44,7 @@ module "tfe_dependency_runner" {
   policy_arns_count = 1
   runtime           = "python3.7"
   source            = "QuiNovas/lambdalambdalambda/aws"
+  timeout           = 600
   version           = "0.2.0"
 }
 
