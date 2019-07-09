@@ -1,7 +1,7 @@
 data "template_file" "swagger" {
-  template = "${file("${path.module}/swagger.json")}"
-  vars {
-    tfe_dependency_runner_uri         = "${module.tfe_dependency_runner.invoke_arn}"
+  template = file("${path.module}/swagger.json")
+  vars = {
+    tfe_dependency_runner_uri = module.tfe_dependency_runner.invoke_arn
   }
 }
 
@@ -10,11 +10,12 @@ data "aws_iam_policy_document" "tfe_dependency_runner" {
     actions = [
       "dynamodb:DeleteItem",
       "dynamodb:PutItem",
-      "dynamodb:Scan"
+      "dynamodb:Scan",
     ]
     resources = [
-      "${module.dependency_table.arn}"
+      module.dependency_table.arn,
     ]
-    sid       = "AllowAccess"
+    sid = "AllowAccess"
   }
 }
+
