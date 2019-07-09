@@ -1,5 +1,5 @@
 module "dependency_table" {
-  attributes = [
+  attribute = [
     {
       name = "organization_name"
       type = "S"
