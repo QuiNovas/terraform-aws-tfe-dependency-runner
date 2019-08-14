@@ -36,7 +36,7 @@ module "tfe_dependency_runner" {
   }
   handler       = "function.handler"
   kms_key_arn   = var.kms_key_arn
-  l3_object_key = "quinovas/tfe-dependency-runner/tfe-dependency-runner-0.0.1.zip"
+  l3_object_key = "quinovas/tfe-dependency-runner/tfe-dependency-runner-0.0.2.zip"
   name          = "${var.name_prefix}tfe-dependency-runner"
   policy_arns = [
     aws_iam_policy.tfe_dependency_runner.arn,
