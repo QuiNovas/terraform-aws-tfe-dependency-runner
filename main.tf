@@ -14,7 +14,7 @@ module "dependency_table" {
   name         = "${var.name_prefix}tfe-dependency-runner"
   range_key    = "workspace_name"
   source       = "QuiNovas/dynamodb-table/aws"
-  version      = "3.0.1"
+  version      = "3.0.7"
 }
 
 resource "aws_iam_policy" "tfe_dependency_runner" {
@@ -36,7 +36,7 @@ module "tfe_dependency_runner" {
   }
   handler       = "function.handler"
   kms_key_arn   = var.kms_key_arn
-  l3_object_key = "quinovas/tfe-dependency-runner/tfe-dependency-runner-0.0.2.zip"
+  l3_object_key = "quinovas/tfe-dependency-runner/tfe-dependency-runner-0.0.3.zip"
   name          = "${var.name_prefix}tfe-dependency-runner"
   policy_arns = [
     aws_iam_policy.tfe_dependency_runner.arn,
@@ -44,7 +44,7 @@ module "tfe_dependency_runner" {
   runtime = "python3.7"
   source  = "QuiNovas/lambdalambdalambda/aws"
   timeout = 30
-  version = "3.0.2"
+  version = "3.0.5"
 }
 
 resource "aws_api_gateway_rest_api" "tfe_dependency_runner" {
